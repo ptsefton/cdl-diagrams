@@ -1,0 +1,70 @@
+@startuml
+
+!include ./data-lab-style.md
+
+title: A Constellation of Annotation Workflows
+
+
+
+rectangle "Annotation / CMS / Website workspaces"  as ann <<workspace>> {
+    rectangle "Omeka" as om
+    rectangle "Heurist" as he
+    rectangle "Node Goat" as ng
+    rectangle "Crate-O" as co
+}
+
+
+
+
+rectangle "Trove Data Guide" <<guidance>> as tdg {
+    rectangle "Export Newspaper Article Collection" {
+        rectangle "Notebook" as nb <<workspace>>
+    }
+
+}
+
+note bottom of nb : Excuted in\nBinder env
+rectangle "RO-Crate Interchange" as ro {
+    
+}
+
+nb -down-> Trove : Fetch data
+nb -down-> ro : Export in RO-Crate format
+
+
+
+rectangle "Archival Repositories" <<repository>> as ar {
+
+database "Zenodo\n(for example)" as z {
+ rectangle "Archived, Packaged Code" as code
+ rectangle "Archived Node Graph\nAnnotations, sites" as res
+ rectangle "Node Graphs" as  ng
+
+ 
+}
+
+
+
+database "Trove" {
+
+    database "Newspapers" as news {
+
+    }
+    rectangle "Harvested Records" as harv {
+
+    }
+
+}
+}
+
+
+om <-down-> ro
+he <-down-> ro
+ng <-down-> ro
+co <-down-> ro
+
+ro --down--> res : Deposit
+
+
+@enduml
+
