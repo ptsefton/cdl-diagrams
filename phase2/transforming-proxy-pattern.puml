@@ -1,0 +1,43 @@
+@startuml
+!include ./data-lab-style.md
+
+title: Transforming Proxy
+
+database "Trove" <<repository>> as t {
+rectangle "API" as tvapi
+}
+
+rectangle "Transforming API" as trapi <<workspace>> {
+rectangle "Transformer\n Eg Java based XSLT"  as tf
+}
+
+rectangle "Analytical"  as ws <<workspace>> {
+rectangle "Notebook" as nb  {
+
+}
+
+rectangle "Service: Eg Voyant tools " as s1  {
+}
+}
+
+
+
+rectangle "Transformed Results" as tr {
+ rectangle "OAI-PMH"
+  rectangle "RSS/Atom"
+  rectangle "TEI"
+  rectangle "Linked Data / RDF"
+
+
+}
+
+ws --down--> trapi : Send 'normal' Trove call\nw/ user API Key
+
+
+trapi --up--> tr : Send/receive 'normal' Trove call\nw/ user API Key
+
+tr ---up---> ws : Receive TEI etc
+
+
+trapi <--> t : Standard API Call
+@enduml

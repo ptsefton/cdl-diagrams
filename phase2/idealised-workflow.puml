@@ -1,0 +1,47 @@
+@startuml
+
+!include ./data-lab-style.md
+
+title: Idealised view of a FAIR data research workflows\n"How did I get here?"
+
+actor "Researcher" as r
+
+rectangle "Workspaces"  as ws {
+rectangle "Annotation Workspace" <<workspace>>  as anw 
+rectangle "Analytical Workspace" <<workspace>>  as aw 
+
+}
+
+rectangle "Archival Repositories" <<repository>> as ar {
+
+database "Zenodo\n(for example)" {
+ rectangle "Archived, Packaged Code" as code
+ rectangle "Archived Results" as res
+rectangle "Node Graphs" as  ng
+
+ 
+}
+
+database "LDaCA\n(for example)" {
+     rectangle "Archived input data" as input
+}
+
+database "Trove" {
+
+}
+}
+
+note bottom of code: With required settings\nand dependencies to form\na re-runnable, interoperable\n"workflow"
+
+
+note bottom of ng: Standards-based\nannotations and collections
+
+r -down-> aw : Try settings, tweak code,\nget resulting outputs\neg: charts & new datasets
+r -down-> anw :  Annotate relationships\nbetween data entities\nand concepts
+anw -down-> ar : Reference a variety\nof data
+anw -down-> ng : Deposit
+ws -down-> input : use 
+aw -down-> res: Deposit
+aw -down-> code: Deposit
+
+@enduml

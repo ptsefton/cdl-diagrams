@@ -1,0 +1,117 @@
+
+
+@startuml
+
+!include ./data-lab-style.md
+
+title: Potential Future Community Data Lab Architecture
+top to bottom direction
+
+rectangle "Entry web site" <<guidance>> as web {
+    rectangle "Tools Search" as ts {
+
+    }
+    rectangle "Curated Links" as cl {
+        
+    }
+     rectangle "Tools" <<index>> {
+
+    }
+
+}
+
+rectangle "Research and Data Guides" <<guidance>> as dgs {
+
+
+   
+ }
+
+
+
+cl -down-> dgs 
+
+rectangle "Infrastructure" {
+
+
+rectangle "Code repositories" as gits <<workspace>> {
+rectangle "github" 
+rectangle "gitlab"
+rectangle "institutional code repo"
+}
+
+database "Data Repositories & Indices" as repos <<repository>> {
+    rectangle "Research-ready" {
+   
+    database "LDaCA/ATAP"    {
+
+    }
+    database "ADA"   {
+
+    }
+    database "HASS\nResearch Data\nrepository" as hr {
+
+    }
+    database "Zeondo et al" {
+
+    }
+    }
+    rectangle "Public GLAM" {
+     database "Trove"   {
+
+    }
+    database "..." as dn   {
+
+    }
+    database "1" as a1   {
+
+    }
+     database "2"  as a2   {
+
+    }
+    }
+    
+}
+
+rectangle "Compute" {
+    rectangle "Compute Services" as Services  <<workspace>>  {
+    rectangle "AWS"
+    rectangle "Azure"
+    rectangle "Acme University"
+    rectangle "..." as cn
+    rectangle "Nectar"
+    }
+    rectangle "On Demand" as od  <<workspace>>  {
+       rectangle "Notebook instances"
+       rectangle "Virtual Desktop Sessions"
+       rectangle "Ephemeral APIs"
+
+
+    }
+    rectangle "Fixed Term"  as lr  <<workspace>>  {
+        rectangle "Image Annotation\nWorkbench"
+        rectangle "Stylometry"
+        rectangle "..." as apps
+
+    }
+
+
+    lr -down--> Services
+    od --down--> Services
+
+}
+
+Tools -right-> gits: Index tools
+}
+
+
+
+Tools -> dgs : Index guides
+ts -down-> Tools
+gits --down--> Compute
+Compute --up--> repos 
+Trove <-down- a1
+Trove <-down- a2
+
+dgs --down--> gits : Link to reusable tools
+dgs --down--> repos
+@enduml
