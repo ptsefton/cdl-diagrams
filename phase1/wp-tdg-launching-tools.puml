@@ -1,0 +1,39 @@
+@startuml
+!include ./data-lab-style.md
+
+title: Launching software tools from\nTrove Data Guide (WP-TDG)
+
+top to bottom direction
+rectangle "Public Git Service" <<workspace>> {
+    rectangle "Data guide source"  as guidesource
+    rectangle "Notebooks" {
+
+    }
+}
+
+rectangle "Trove Data Guide" as tdg <<support>> {
+    rectangle "examples"
+    rectangle "description"
+  
+}
+
+rectangle "Trove" as trove <<repository>> {
+    rectangle "Newspapers"
+    rectangle "Other"
+     rectangle "API"
+}
+
+rectangle "⚙️ Running Notebook ⚙️"  <<workspace>> as instance
+
+
+rectangle "Compute" as compute <<workspace>> {
+    rectangle "Nectar"
+    rectangle "..."
+}
+
+examples --down--> Nectar: launch Notebook 1
+Nectar -up-> Notebooks: fetch Notebook 1
+Nectar -down-> instance: launch Notebook 1
+instance -down-> API : Use
+
+@enduml

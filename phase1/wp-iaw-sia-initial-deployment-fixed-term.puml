@@ -1,0 +1,62 @@
+@startuml
+!include ./data-lab-style.md
+
+title: Initial deployment of IAW and IA as fixed-term services
+
+top to bottom direction
+
+
+
+rectangle "Trove Data Guide" as tdg <<support>> {
+    rectangle "examples"
+    rectangle "description"
+  
+}
+
+
+
+
+rectangle "Hosted Fixed-term Services" {
+            rectangle "Image Annotation Workbench (Utility)" <<workspace>>  as iaw {
+                rectangle "Trove API adaptor" as iaadapt
+
+          
+            }
+            rectangle "Intelligent Archive (Stylometry)" as ia  <<workspace>> {
+                rectangle "Web UI"
+                
+            }
+           
+
+           
+}
+
+rectangle "Archival Repositories" {
+     rectangle "Trial IIF API proxy" as iiifapi <<repository>> {
+            
+            } 
+rectangle "Trove" as trove <<repository>> {
+    rectangle "Newspapers"
+    rectangle "Other"
+     rectangle "API"
+}
+rectangle "Australian Text Analytics Platform (ATAP) repository" <<repository>> {
+    rectangle "API" as atapapi
+    rectangle "Web UI" as atapui
+}
+}
+
+iaadapt -down-> API : Request data using GLAM\nworkbench libraries\npackage as RO-Crate
+
+examples -down-> iaw : How to find an image\nin Trove\nand instantiate in IAW
+
+examples -down-> ia : Explains how to find\ntext in Trove and\nanalyse in IA in IA
+
+iaw --down-> iiifapi : Request images
+
+iiifapi --down--> API : Proxy requests
+
+ia --down--> API : Pull\ndata 
+
+ia --down-- atapapi : Pull data\n (with access control)
+@enduml

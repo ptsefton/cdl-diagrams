@@ -1,0 +1,66 @@
+@startuml
+
+!include ./data-lab-style.md
+
+title: FAIRification of Trove and other GLAM repositories
+
+
+
+package "FAIR Digital Object" as ro {
+    rectangle "Metadata"
+    rectangle "Data" {
+
+    }
+}
+note left of Metadata: Data is labelled as a static\nTrove snapshot\nas per forthcoming MOU
+
+
+rectangle "Workspaces" as ws <<workspace>> {
+actor "Researcher" as res
+res -down-> Trove : Select data
+res -down-> ro : Create data package
+}
+
+ro -down-> rr : Deposit in a FAIR repo
+
+database "Data Repositories & Indices" as repos <<repository>> {
+    rectangle "FAIR Repositories" as rr {
+   
+    database "LDaCA/ATAP"    {
+
+    }
+    database "ADA"   {
+
+    }
+    database "HASS\nResearch Data\nrepository" as hr {
+
+    }
+    database "Zeondo et al" {
+
+    }
+    }
+    rectangle "Public GLAM" {
+     database "Trove"   {
+
+    }
+    database "..." as dn   {
+
+    }
+    database "1" as a1   {
+
+    }
+     database "2"  as a2   {
+
+    }
+    }
+    
+}
+
+
+
+
+
+Trove <-down- a1
+Trove <-down- a2
+
+@enduml

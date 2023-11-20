@@ -33,12 +33,6 @@ cl -down-> dgs
 rectangle "Infrastructure" {
 
 
-rectangle "Code repositories" as gits <<workspace>> {
-rectangle "github" 
-rectangle "gitlab"
-rectangle "institutional code repo"
-}
-
 database "Data Repositories & Indices" as repos <<repository>> {
     rectangle "Research-ready" {
    
@@ -80,7 +74,10 @@ rectangle "Compute" {
     rectangle "..." as cn
     rectangle "Nectar"
     }
-    rectangle "On Demand" as od  <<workspace>>  {
+}
+
+rectangle "Analytical Workpaces" as aws {
+    rectangle "On Demand\nAwoken from being 'at rest'" as od  <<workspace>>  {
        rectangle "Notebook instances"
        rectangle "Virtual Desktop Sessions"
        rectangle "Ephemeral APIs"
@@ -88,7 +85,6 @@ rectangle "Compute" {
 
     }
     rectangle "Fixed Term"  as lr  <<workspace>>  {
-        rectangle "Image Annotation\nWorkbench"
         rectangle "Stylometry"
         rectangle "..." as apps
 
@@ -100,18 +96,30 @@ rectangle "Compute" {
 
 }
 
-Tools -right-> gits: Index tools
+
+rectangle "Annotation & Node Graph workspaces" as aw {
+    rectangle "On Demand" as odann  <<workspace>>  {
+       rectangle "RO-Crate editor"
+
+
+    }
+    rectangle "Fixed Term"  as lrann  <<workspace>>  {
+        rectangle "Image Annotation\nWorkbench"
+        rectangle "Omeka(S)"
+        rectangle "POTENTIAL: RO-Crate Collection App"
+        rectangle "..." as apps
+
+    }
+
+}
 }
 
 
 
 Tools -> dgs : Index guides
-ts -down-> Tools
-gits --down--> Compute
-Compute --up--> repos 
+Compute ---down---> repos 
 Trove <-down- a1
 Trove <-down- a2
-
-dgs --down--> gits : Link to reusable tools
-dgs --down--> repos
+dgs --down--> aws : Recommmend / guide
+dgs -down-> aw : Embed
 @enduml

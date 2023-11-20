@@ -1,0 +1,28 @@
+
+@startuml
+!include ./data-lab-style.md
+title: ARDC Skills Landscape mapping for HCDL
+actor "Research Software Engineer" as us
+actor "Researcher" as res
+actor "Data Librarian" as lib
+
+rectangle "Data Capabilities" as dc {
+rectangle "Data Management" {
+ rectangle "Working with data" as work
+    rectangle "FAIR Implementation" as FAIR
+    rectangle "Preserving Data" as pres
+}
+rectangle "Data Generation and Use" as use {
+   rectangle "Data Methods"
+   rectangle "Using Data Infrastructures"
+}
+}
+
+
+
+us --down--> FAIR : Design and deploy\ninfrastructure
+res --down--> work : Operate in\nHCDL environment
+res --down--> use 
+lib --down--> pres : Maintain data,\nmetadata &  ID
+
+@enduml

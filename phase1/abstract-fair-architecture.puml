@@ -1,0 +1,102 @@
+
+@startuml
+title: Abstract FAIR architecture for standards based archival repositories
+!include_many ./data-lab-style.md
+
+
+'This is a duplicate of (but in a single file)
+'https://github.com/Language-Research-Technology/plantuml-diagrams/blob/main/generic/fair-conceptual-architecture.puml
+
+
+rectangle "Authorization and Authentication" as auths <<authorization>> {
+    rectangle "License Management" as lic
+    rectangle "Attribute & Certification\nManagement" as att
+    rectangle "Identity Authentication" as id
+
+}
+
+id -down-> lic
+att -down-> lic
+
+rectangle "                Archival Repositories   \n\n"  as arch <<repository>> {
+    rectangle "Discovery Services" as disco
+    rectangle "APIs" as api
+    database "  1  " as 1 
+    database "  2  " as 2
+    database "  3  " as 3
+    database "  4  " as 4
+    rectangle "🗑 Policy based data management  preservation / disposal    " as arbin
+     rectangle "Policy based Indentifiers    " as ids
+   
+}
+api <-down->1
+api <-down->2
+api <-down->3
+api <-down->4
+4 -down[hidden]-> arbin
+2 -down[hidden]-> ids
+
+rectangle "Standards" <<standards>> {
+    
+    package "RO-Crate" as ro {
+        rectangle "Schema.org"
+        rectangle "JSON-LD"
+    }
+
+     rectangle "Storage Specs" as sstorage {
+        rectangle "OCFL"
+    }
+ 
+
+    rectangle "PIDs" {
+      rectangle "DOI"
+      rectangle "ARCP"
+      rectangle "Managed URIs"
+    }
+    rectangle "Profiles & Policy" as Profiles {
+        rectangle "Language Data" as ldac
+        rectangle "Workflow Run" as wr
+    }
+    Profiles --down[hidden]--> ro
+    ro -down[hidden]-> sstorage
+    OCFL -right[hidden]-> NOCFL
+} 
+
+rectangle "FAIR + CARE \n\n"  as FAIR {
+rectangle "  F  " as F
+rectangle "  A   " as A
+rectangle "  I  " as I 
+rectangle "  R"   as R
+}
+F -right[hidden]-> A
+A -right[hidden]-> I
+I -right-> R
+
+
+
+ro -down-> Profiles
+Profiles  -down[hidden]-> PIDs
+
+database "FDO1" {
+
+}
+
+note left of FDO1: "FDO === FAIR Digital Object"
+
+database "FDO2" {
+
+}
+
+I -up-> FDO1 
+FDO1 -right-> ldac : Conforms to
+FDO2 --down--> 1 : Deposit
+FDO2 <--down-- 1 : Fetch
+FDO2 <-up- R
+disco <-> api
+api -- A : Authorize\nall\nrequests
+
+FAIR -down[hidden]-> arch
+F <--down--> disco
+A --up--> lic
+@enduml
+

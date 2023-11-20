@@ -1,0 +1,50 @@
+@startuml
+!include ./data-lab-style.md
+
+title: Trove architecture showing repository vs index
+allowmixing
+top to bottom direction
+
+database "Trove"  {
+
+interface API {
+  newspaper
+  gazette
+  book
+  article
+  picture
+  music
+  map
+  collection
+  list
+  people
+}
+rectangle "NLA governed content (Repositories)" <<repository>> as repos {
+
+database "Newspapers and Gazettes" {
+
+}
+database "Websites" {
+    
+}
+database "Trove Digital Libraries" {
+    
+}
+database "Annotations" {
+
+}
+}
+
+
+
+rectangle "Harvested Indices" as Indices {
+database "Bibliographic Database" 
+database "People and Organizations"
+
+
+}
+
+Indices -down[hidden]-> repos 
+
+
+@enduml

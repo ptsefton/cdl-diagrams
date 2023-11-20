@@ -1,0 +1,52 @@
+@startuml
+
+!include_many ./data-lab-style.md
+!include_many ./standards-components.puml
+
+title: Initial deployment of IAW publication of results & code
+
+top to bottom direction
+
+
+
+rectangle "Trove" as trove <<repository>> {
+    rectangle "Newspapers"
+    rectangle "Other"
+     rectangle "API"
+}
+
+
+
+rectangle "Compute: Nectar Hosted" as compute  {
+    rectangle "Image Annotation Workbench (Utility)" as iaw <<workspace>>{
+             rectangle "Data (Results) Packaging Service"  as crater
+            }
+            iiifapi --down--> API : Proxy requests
+
+    
+    rectangle "Trial\nIIF API \nproxy" as iiifapi <<repository>> {
+
+            }
+    
+
+}
+rectangle "Code Collaboration" as colab <<workspace>> {
+    rectangle github
+    rectangle gitlab
+}
+
+rectangle "Public Data Repositories" as repos <<repository>> {
+    rectangle "Zenodo" {
+         rectangle "User Generated Annotation" as annotation
+         rectangle "Code"
+    }
+    rectangle "Dryad"
+    rectangle "Figshare"
+}
+iiifapi -> ARK : Uses
+iaw -> ARK : Uses
+crater --down--> annotation : Deposit
+annotation --> iiifapi : Refers to 
+annotation ---> ifa : Conforms to
+colab --> Code : Archive apps
+@enduml

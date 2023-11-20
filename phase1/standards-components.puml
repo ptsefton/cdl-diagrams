@@ -1,0 +1,36 @@
+@startuml
+
+
+rectangle "Standards" <<standards>> {
+    
+    package "RO-Crate" as ro {
+        rectangle "Schema.org"
+        rectangle "JSON-LD"
+    }
+
+    rectangle "IIIF Manifest" as ifm
+    rectangle "W3C Annotation" as wann
+    rectangle "PIDs" {
+      rectangle "DOI"
+      rectangle "Managed URLs" as ARK
+    }
+
+    rectangle "Profiles" {
+        rectangle "Language Data" as ldac
+        rectangle "IIIF Archive" as ifa
+        ldac -down[hidden]-> ifa
+    }
+    rectangle "Formats" {
+       rectangle  "TEI"
+       rectangle "etc..." as other
+    }
+    ifa -down[hidden]-> wann
+    ifa -> wann : References
+    ifa -> ifm : References
+    ifa -down-> ARK : uses
+
+}   
+
+ro -down-> Profiles
+Profiles  -down[hidden]-> PIDs
+@enduml

@@ -1,0 +1,42 @@
+@startuml
+!include ./data-lab-style.md
+
+
+title: Future HASS Community Data Lab Architecture\nData and research guides
+top to bottom direction
+
+rectangle "Entry web site" <<support>> as web {
+    rectangle "Tools Search" as ts {
+
+    }
+    rectangle "Curated Links" as cl {
+        
+    }
+     rectangle "Tools" <<index>> {
+
+    }
+
+}
+
+rectangle "Research and Data Guides" <<support>> as dgs {
+rectangle "Trove Data Guide" as tdg {
+
+}
+rectangle "Text Analytics (ATAP)\nTechniques Guide" as tadg {
+
+}
+
+rectangle "Stylometrics\nTechniques Guide" as smdg {
+
+}
+
+rectangle "Social Science\nData Guide" as ssdg {
+
+}
+
+
+   
+ }
+ts -down-> Tools
+web -down[hidden]-> dgs
+Tools -down-> dgs : Index guides

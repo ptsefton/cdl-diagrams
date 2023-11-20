@@ -1,0 +1,26 @@
+@startuml
+!include ./data-lab-style.md
+
+title: Trove Data Guide and Findability of software
+
+top to bottom direction
+
+rectangle "Public Git Service" <<workspace>> {
+    rectangle "Data guide source"  as guidesource
+    rectangle "Notebooks" {
+
+    }
+    }
+
+
+
+rectangle "Australian Text Analytics Platform (ATAP) repository" <<repository>> {
+    rectangle "API" as atapapi
+    rectangle "Web UI" as atapui {
+        rectangle "Discover Data"
+        rectangle "Discover Code"
+    }
+    rectangle "Software Harvester"  as harvest
+}
+harvest --up--> Notebooks : Read metadata and index
+@enduml

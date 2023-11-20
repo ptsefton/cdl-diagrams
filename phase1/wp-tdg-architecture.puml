@@ -1,0 +1,40 @@
+@startuml
+!include ./data-lab-style.md
+
+title: High level architecture of\nthe Trove Data Guide (WP-TDG)
+
+top to bottom direction
+
+rectangle "Public Git Service" <<workspace>> {
+
+    rectangle "Data guide source"  as guidesource
+    rectangle "Notebooks" {
+
+    }
+}
+
+rectangle "Trove Data Guide" as tdg <<support>> {
+    rectangle "examples"
+    rectangle "description"
+}
+
+
+rectangle "Trove" as trove <<repository>> {
+    rectangle "Newspapers"
+    rectangle "Other"
+}
+
+examples --down--> compute: launch
+
+rectangle "Compute" as compute <<workspace>> {
+    rectangle "Nectar"
+    rectangle "Binder"
+    rectangle "Reclaim"
+    rectangle "Institutional HPC"
+}
+
+examples -down-> Notebooks
+description --> trove : Introduction / background\nhow to use
+guidesource -> tdg : Generate
+
+@enduml
