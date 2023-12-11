@@ -34,15 +34,15 @@ TEItransform <--> GenericProxy
 WordPress <--> atom
 FeedReader <--> atom
 atom <--> Atomtransform
-Atomtransform --> GenericProxy
+Atomtransform <--> GenericProxy
 
 Spreadsheet <--> csv
 csv <--> CSVtransform
-CSVtransform --> GenericProxy
+CSVtransform <--> GenericProxy
 
 TroveXMLClient <--> trovexml
 trovexml <--> GenericProxy
 
-GenericProxy --down--> TroveAPI
+GenericProxy <--down--> TroveAPI
 
 @enduml
