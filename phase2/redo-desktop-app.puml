@@ -1,0 +1,47 @@
+
+@startuml
+!include_many ./data-lab-style.md
+title: Story: 'CDLifying' a desktop app
+
+start
+note right
+Assumption: this app is being considered for CDL investment
+Because it has become hard to sustain or distribute
+end note
+
+switch (Separate: \nAnalytical components from\ncollecting/storage components)
+
+case (Data storage\n- choose compliant repo solition)
+  switch (Access / scale)
+
+    case (C\nspecific repo/app\nexists)
+        :Use it;
+    case (Small-medium OA)
+        :Use generic repo\n(eg) Omeka S;
+    case (Large/complex or Sensitive)
+        :Use RRkive;
+  
+
+  endswitch
+  :Data preservable in RO-Crate\naccsible via API;
+case (Analytics)
+    :Find 'Intellectual core';
+    if (Libraries exist) then (yes)
+
+    else (no)
+        :Write new library(s);
+        note left 
+            If possible, 
+            extend an an 
+            existing package 
+            (eg NLTK)
+        end note
+    endif
+    :One or more:\n- Notebook\n- Repo plugin;- Static deployment\n- Deployable Container;
+endswitch
+
+
+
+
+stop
+@enduml

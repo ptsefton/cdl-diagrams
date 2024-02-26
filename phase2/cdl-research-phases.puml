@@ -46,17 +46,3 @@ endswitch
 @enduml
 
 
-@startuml
-
-if (API is versioned\ndata stable) then (no) 
-:download a reference copy;
-:Archive the dataset; 
-note right
-See guide to choosing a data repository
-based on 
-end note
-else (yes)
-:Archive a list of IDs\nmetadata;
-endif
-
-@enduml

@@ -24,6 +24,12 @@
 
 <img src="potential-future-architecture.svg">
 
+## [phase2/redo-desktop-app.svg](./redo-desktop-app.svg)
+
+
+
+<img src="redo-desktop-app.svg">
+
 ## [phase2/transforming-proxy-pattern.svg](./transforming-proxy-pattern.svg)
 
 
