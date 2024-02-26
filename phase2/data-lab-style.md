@@ -12,6 +12,11 @@ skinparam arrowThickness 4
 skinparam defaultFontName Chalkduster
 
 
+skinparam activityFontSize 24
+skinparam activityFontName Chalkduster
+skinparam activityDiamondFontSize 24
+skinparam activityArrowFontSize 24
+
 skinparam note  {
     BackgroundColor<< workspace >>  #FFC7D8
     BackgroundColor<< repository >>  springgreen

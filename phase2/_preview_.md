@@ -6,6 +6,12 @@
 
 <img src="annotation-workflows.svg">
 
+## [phase2/cdl-research-phases.svg](./cdl-research-phases.svg)
+
+
+
+<img src="cdl-research-phases.svg">
+
 ## [phase2/idealised-workflow.svg](./idealised-workflow.svg)
 
 

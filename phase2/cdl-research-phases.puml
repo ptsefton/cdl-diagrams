@@ -1,0 +1,62 @@
+
+@startuml
+!include_many ./data-lab-style.md
+
+title: Digital (Humantities & other) Research Phases
+
+
+:Prepare To Get Data;
+
+note right
+Desired end-state is that a 
+stable reference-copy of data 
+used for analysis, annotation 
+and outreach is available for 
+re-use by other parties inlcuding
+your future-self
+end note
+
+:Source Data; 
+
+note right
+One or more
+end note
+
+start
+switch ()
+case ( Trove Data or\nother GLAM Source )
+  :Get list of IDs / Metadata;
+if ((c) allows) then (yes)
+ :Archive a copy;
+endif
+case ( DIY Scans ) 
+  :Text 2;
+case ( Hand-gathered Files )
+  :Text 3;
+case ( condition D )
+  :Text 4;
+case ( condition E )
+  :Text 5;
+endswitch
+
+
+
+
+
+@enduml
+
+
+@startuml
+
+if (API is versioned\ndata stable) then (no) 
+:download a reference copy;
+:Archive the dataset; 
+note right
+See guide to choosing a data repository
+based on 
+end note
+else (yes)
+:Archive a list of IDs\nmetadata;
+endif
+
+@enduml

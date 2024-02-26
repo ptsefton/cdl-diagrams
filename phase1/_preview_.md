@@ -30,6 +30,12 @@
 
 <img src="trove-conceptual-architecture.svg">
 
+## [phase1/work-cycle.svg](./work-cycle.svg)
+
+
+
+<img src="work-cycle.svg">
+
 ## [phase1/wp-iaw-publication.svg](./wp-iaw-publication.svg)
 
 

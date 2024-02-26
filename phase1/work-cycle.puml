@@ -1,3 +1,5 @@
+@startuml
+
 !include ./data-lab-style.md
 title: The research data work-cycle
 
