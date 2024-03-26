@@ -1,7 +1,7 @@
 
 @startuml
 !include_many ./data-lab-style.md
-title: Story: 'CDLifying' a desktop app
+title: Story: 'CDLifying' a desktop or web app
 
 start
 note right
@@ -11,20 +11,26 @@ end note
 
 switch (Separate: \nAnalytical components from\ncollecting/storage components)
 
-case (Data storage\n- choose compliant repo solition)
+case (Data storage\n- choose compliant repo/cms solution)
+partition #springgreen Repository  {
   switch (Access / scale)
 
-    case (C\nspecific repo/app\nexists)
+    case (Compliant domain-specific\nrepo/app exists)
         :Use it;
     case (Small-medium OA)
         :Use generic repo\n(eg) Omeka S;
-    case (Large/complex or Sensitive)
+    case (Large/complex or\nSensitive)
         :Use RRkive;
-  
-
+        note left
+            --------
+            OUT OF SCOPE??
+            --------
+        end note
   endswitch
-  :Data preservable in RO-Crate\naccsible via API;
+  :Data preservable in RO-Crate;
+}
 case (Analytics)
+partition #FFC7D8 Workspace {
     :Find 'Intellectual core';
     if (Libraries exist) then (yes)
 
@@ -37,7 +43,8 @@ case (Analytics)
             (eg NLTK)
         end note
     endif
-    :One or more:\n- Notebook\n- Repo plugin;- Static deployment\n- Deployable Container;
+    :One or more:\n- Notebook\n- Repo plugin\n- Static deployment\n- Deployable Container;
+}
 endswitch
 
 

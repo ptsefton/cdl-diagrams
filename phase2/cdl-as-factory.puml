@@ -1,0 +1,84 @@
+
+@startuml
+!include_many ./data-lab-style.md
+title: The CDL as "Infrastructure Incubator"
+start
+note right
+Researchers propose ideas
+end note
+
+switch (Separate: \nAnalytical components from\ncollecting/storage components)
+
+case (Data storage\n- choose compliant repo/cms solution)
+partition #springgreen Repository  {
+if (Data in\nexisting\nrepositories) then (yes)
+  else (no)
+  switch (Access / scale)
+   
+    case (Principles-Compliant\ndomain-specific\napp exists)
+        :Deploy it;
+    case (Small-medium OA)
+        :Deploy generic repo\n(eg Omeka S);
+    case (Large/complex or\nSensitive)
+        :OUT OF SCOPE FOR CDL;
+        note left 
+            Seek RDC-scale help
+
+            But you CAN work on 
+            Getting data organised - 
+            see the RRKive principles
+        end note
+        stop
+  endswitch
+
+  endif
+
+    :Data preservable in RO-Crate;
+  note right
+    Collected and derived data can be deposited 
+    in public and institutional repositories incl.
+    data produced in the workspaces --->
+  end note
+}
+case (Analytics)
+partition #FFC7D8 Workspace {
+    :Find 'Intellectual core';
+    if (Libraries exist) then (yes)
+
+    else (no)
+        :Write new library(s);
+        note left 
+            If possible, 
+            extend an an 
+            existing package 
+            (eg NLTK)
+        end note
+    endif
+    :One or more:\n- Notebook\n- Repo plugin\n- Static deployment\n- Deployable Container;
+}
+endswitch
+
+partition #yellow Guidance {
+
+: "Guide site" ;
+note right
+    - Static website a la GLAM workbench / Trove Data Guide AND/OR
+    - Built in to repo solution  (eg Omeka-S)
+end note
+
+
+
+note left
+    
+
+    
+    THIS IS THE THING THAT WE PROMOTE TO RESEARCHERS ---->
+    
+    All CDL products have a sustainable, archivable web site
+    as the entry point
+end note
+}
+
+
+stop
+@enduml

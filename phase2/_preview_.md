@@ -6,6 +6,24 @@
 
 <img src="annotation-workflows.svg">
 
+## [phase2/api-stability.svg](./api-stability.svg)
+
+
+
+<img src="api-stability.svg">
+
+## [phase2/cdl-as-factory.svg](./cdl-as-factory.svg)
+
+
+
+<img src="cdl-as-factory.svg">
+
+## [phase2/cdl-phase-2-project-pipeline.svg](./cdl-phase-2-project-pipeline.svg)
+
+
+
+<img src="cdl-phase-2-project-pipeline.svg">
+
 ## [phase2/cdl-research-phases.svg](./cdl-research-phases.svg)
 
 
@@ -17,6 +35,12 @@
 
 
 <img src="idealised-workflow.svg">
+
+## [phase2/phase-1analyse-retain.svg](./phase-1analyse-retain.svg)
+
+
+
+<img src="phase-1analyse-retain.svg">
 
 ## [phase2/potential-future-architecture.svg](./potential-future-architecture.svg)
 

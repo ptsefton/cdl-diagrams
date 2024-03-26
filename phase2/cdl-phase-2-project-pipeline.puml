@@ -1,0 +1,51 @@
+@startuml
+!include_many ./data-lab-style.md
+
+rectangle "Researchers" as res {
+
+}
+
+rectangle "A research-ready\nprocess/idea" as idea {
+
+}
+
+rectangle "Data\n(Open/Public Access)" <<repository>> as data {
+database "GLAM Collection" as glamd
+database "Home Grown"  as homed
+glamd <-right-> homed : At least 1 of
+}
+
+rectangle "CDL Project" as proj {
+
+}
+
+rectangle  "Execution Environment" <<workspace>> as code {
+    rectangle "Static hosting\n(Guide Sites)"
+    rectangle "On-demand Compute\n(Notebooks)"
+    rectangle "Collection & Annotation\n(Omeka-S)"
+}
+rectangle "Data Guide Websites"  <<guidance>>  as doco {
+    rectangle "Trove Data Guide"
+    rectangle "Mapping and Geospatial Data Guide"
+    rectangle "Data Collection & Annotation Guide"
+    rectangle "... more"
+} 
+rectangle "Sustainable Outputs" as out <<repository>> {
+rectangle "Code" {
+    rectangle "Libraries"
+    rectangle "Notebooks"
+}
+rectangle "Curated Data Sets" {
+   
+}
+
+}
+
+res --down--> proj
+idea --down--> proj
+data --down--> proj
+
+proj --down--> doco : Produces
+doco -down-> code : Runs in 
+doco ---down-=-> out : Guides creation of
+@enduml

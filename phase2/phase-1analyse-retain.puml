@@ -1,0 +1,60 @@
+
+@startuml
+!include_many ./data-lab-style.md
+title: Phase 1: Analyse and retain data\n(Core CDL Use case)
+
+
+
+
+
+rectangle "Trove Data Guide" <<guidance>> as tdg {
+    rectangle "Notebook" as nb <<workspace>>
+
+note left of nb: Can be run on demand in the\n cloud or locally using\nTrove or other data.
+note right of nb: May have simple forms interface
+
+}
+
+
+
+nb <-down- Trove : Fetch data
+
+
+
+
+
+
+database "Zenodo\n(for example)" as z <<repository>>  {
+ rectangle "Archived, Packaged Code" as code {
+    rectangle code1
+ }
+ rectangle "Analytical Products" {
+    rectangle prod1
+ }
+}
+
+
+
+database "Trove" <<repository>>  {
+
+    database "Newspapers" as news {
+
+    }
+    rectangle "Harvested Records" as harv {
+
+    }
+
+}
+
+
+
+
+
+nb --up--> prod1 : Deposit RO-Crate\nanalytical product
+nb --up--> code1 : Deposit RO-Crate\npackaged code
+
+
+@enduml
+
+
+@enduml

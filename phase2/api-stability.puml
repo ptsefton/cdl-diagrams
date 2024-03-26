@@ -1,0 +1,18 @@
+
+@startuml
+!include_many ./data-lab-style.md
+
+if (API is versioned\ndata stable) then (no) 
+:download a reference copy;
+:Archive the dataset; 
+note left
+See guide to choosing a data repository
+consider copyright. 
+NOTE: Even if you can't 
+redistribute you need a copy
+end note
+else (yes)
+:Archive a list of IDs\nmetadata;
+endif
+
+@enduml
