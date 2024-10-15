@@ -1,0 +1,40 @@
+@startuml
+!include_many ../data-lab-style.txt
+
+title: Activities in Infrastructure Context (1)
+
+
+rectangle "Research & Data Management Activities" as activities <<workspace>> {
+
+actor "Collect\n(new)" as coll
+actor "Collect\n(reuse)" as colr
+actor "Curate" as cur 
+actor "Integrate" as int
+actor "Analyse"  as an
+
+colr <-up-> an
+colr <-up-> int
+coll --up--> cur
+cur <-down-> an
+an <--right--> int
+int -up-> cur
+
+}
+
+
+
+rectangle "Infrastucture" as infrastructure {
+    cloud "Novel /\nnon-archive\ndata" as new 
+
+ database "Archival Repositories" as repo <<repository>> {
+ }   
+}
+
+coll <--down-- new 
+repo --up--> colr : Reuse
+cur --down-> repo : Deposit/\nPublish
+
+note bottom of repo: Managed/\nsecure assets
+note bottom of new: Unmanaged/\nnon-secure assets
+@enduml
+

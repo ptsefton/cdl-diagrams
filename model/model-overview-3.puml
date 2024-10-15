@@ -1,0 +1,39 @@
+
+@startuml
+!include_many ../data-lab-style.txt
+top to bottom direction
+
+title: Use of research data and\noutputs Research Impact\n(Beyond the research cycle)
+
+
+
+
+
+
+rectangle "Repositories / Publishers / GLAM institutions" as repo <<repository>> {
+    rectangle "Journals, books & other publications" as ja
+    rectangle "GLAM systems" as glam
+    rectangle "Curated datasets" as cd
+    rectangle "Institutional Research\nRepositories" as irs
+    rectangle "Domain Repositories"
+
+ }   
+cloud "Research Impact" {
+
+rectangle "Policy"  as pol
+rectangle "Education" as ed
+rectangle "Decision Support" as dec 
+rectangle "Reporting" as rep 
+}
+repo ---down---> pol
+repo ---down---> ed
+repo ---down---> dec 
+repo ---down---> rep
+
+
+
+
+
+
+
+@enduml

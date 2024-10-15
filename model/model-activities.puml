@@ -1,0 +1,25 @@
+@startuml
+
+!include ../data-lab-style.txt
+title: A simple idealised  view of\na research data cycle
+
+
+top to bottom direction
+
+rectangle "Research & Data Management Activities" as activities <<workspace>> {
+
+actor "Collect" as coll
+actor "Curate" as cur 
+actor "Integrate" as int
+actor "Analyse"  as an
+
+}
+
+
+coll -right-> cur
+cur <-down-> int
+cur <-right-> an
+int <-right-> an
+
+
+@enduml

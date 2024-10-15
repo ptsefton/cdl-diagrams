@@ -77,7 +77,7 @@ skinparam database  {
     BackgroundColor<< workspace >>  #FFC7D8
     BackgroundColor<< repository >>  springgreen
     BackgroundColor<< support >>  lightyellow
-        BackgroundColor<< standards >>  lightblue
+    BackgroundColor<< standards >>  lightblue
 
     BorderThickness 4
     BackgroundColor transparent

@@ -1,9 +1,7 @@
 
 @startuml
 !include_many ./data-lab-style.md
-title: Phase 1: Analyse and retain data\n(Core CDL Use case)
-
-
+title: Analyse Data from a GLAM repository\n(Core CDL Use case)
 
 
 
@@ -18,9 +16,6 @@ note right of nb: May have simple forms interface
 
 
 nb <-down- Trove : Fetch data
-
-
-
 
 
 

@@ -1,0 +1,35 @@
+@startuml
+!include_many ../data-lab-style.txt
+!include_many model-activities.puml
+
+title: Activities in Infrastructure Context (2)
+
+
+
+
+rectangle "Infrastucture" as infrastructure {
+
+rectangle "Access and authentication services" {
+
+ database "Archival Repositories" as repo <<repository>> {
+
+ }   
+
+  database "Computation" as comp <<workspace>> {
+    rectangle "Collections\neg websites"
+    rectangle "Working data"
+    rectangle "Bibliographies"
+    rectangle "Code"
+    rectangle "Desktop computers"
+    rectangle "more..."
+ }   
+}
+}
+
+repo --up--> coll : Reuse
+cur --down-> repo : Deposit
+an -down-> repo : Publish /\nArchive Results
+an  --down--> comp : Use,\nextend
+cur <--down-- comp : Preserve
+@enduml
+

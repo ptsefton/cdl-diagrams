@@ -1,0 +1,43 @@
+@startuml
+!include ../data-lab-style.txt
+
+title: High level architecture of\nthe Trove Data Guide (WP-TDG)
+
+top to bottom direction
+
+rectangle "Public Git Service" <<workspace>> {
+
+    rectangle "Data guide source"  as guidesource
+    rectangle "Notebooks" {
+
+    }
+}
+
+rectangle "Trove Data Guide" as tdg <<guidance>> {
+    rectangle "examples"
+    rectangle "description"
+}
+
+
+rectangle "Trove" as trove <<repository>> {
+    rectangle "Newspapers"
+    rectangle "Other"
+}
+
+examples --down--> compute: launch
+
+rectangle "Compute" as compute <<workspace>> {
+    rectangle "Binder Hub" {
+        rectangle "Code Notebook" as cn
+    }
+    
+}
+
+examples -down-> Notebooks
+description --> trove : Introduction / background\nhow to use
+guidesource -> tdg : Generate
+
+note  bottom of trove: Trove contains *Curated* data\n*Collected* by the\nNational Libary of Australia
+note bottom of compute: *Analysis* takes place in code notebooks.\nOutputs from this process are *Collected* & *Curated*\nand depostied into suitable archival repositories or published
+note top of compute: In some cases data from multiple sources\nis *Integrated* via code with the results\n*Curated*and deposited into appropriate\nArchival Repositories 
+@enduml

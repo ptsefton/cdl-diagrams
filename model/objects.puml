@@ -1,0 +1,43 @@
+@startuml
+!include_many ../data-lab-style.txt
+
+title: Making Reusable Data Objects
+
+
+rectangle "Research & Data Management Activities" as activities <<workspace>> {
+
+actor "Curate & Integrate" as cur 
+
+actor "Collect" as coll
+
+
+
+rectangle "Reusable Data Object" as obj  {
+    rectangle "Data" as objdata
+    rectangle "Metadata" as objmeta
+}
+
+rectangle "Standards"  as std <<standards>> { 
+    rectangle "Packaging Standard: RO-Crate" as meta
+    rectangle "Metadata Profile" as data
+}
+}
+
+rectangle "Infrastucture" as infrastructure {
+    cloud "Novel /\nnon-archive\ndata" as new 
+
+ database "Archival Repositories" as repo <<repository>> {
+ }   
+}
+
+coll <--down-- new 
+coll --right--> cur : Make reuable
+cur --up--> std : Use
+cur -down-> objmeta : Describe Data
+
+
+obj--down-> repo : Deposit/\nPublish
+
+note bottom of new: Unmanaged/\nnon-secure assets
+@enduml
+

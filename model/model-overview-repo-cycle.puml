@@ -1,0 +1,26 @@
+@startuml
+!include_many ../data-lab-style.txt
+!include_many model-activities.puml
+
+title: An idealised  view of\na research data cycle with\nArchival Repository Infrastructure
+
+
+
+rectangle "Research & Data Management Activities" as activities <<workspace>> {
+
+actor "Collect" as coll
+actor "Curate & Integrate" as cur 
+actor "Analyse"  as an
+
+}
+
+rectangle "Infrastucture" as infrastructure {
+
+ database "Archival Repositories" as repo <<repository>> {
+ }   
+}
+
+an --> repo :  Deposit / Publish well described output
+repo --> coll : Reuse
+@enduml
+
