@@ -8,17 +8,17 @@ top to bottom direction
 rectangle "Research & Data Management Activities" as activities <<workspace>> {
 
 actor "Collect" as coll
-actor "Curate" as cur 
-actor "Integrate" as int
+actor "Prepare" as prep 
+actor "Deposit" as dep
 actor "Analyse"  as an
 
 }
 
 
-coll -right-> cur
-cur <-down-> int
-cur <-right-> an
-int <-right-> an
+coll -right-> prep
+prep -down-> dep
+prep <-right-> an
+an -down-> dep
 
 
 @enduml

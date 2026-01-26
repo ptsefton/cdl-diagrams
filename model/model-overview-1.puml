@@ -23,17 +23,19 @@ int -up-> cur
 
 
 
-rectangle "Infrastucture" as infrastructure {
+rectangle "Storage Infrastucture" as infrastructure {
     cloud "Novel /\nnon-archive\ndata" as new 
 
- database "Archival Repositories" as repo <<repository>> {
+ database "Archival Repositories\n(Institutional, Discipline,\nPublic (eg Zenodo),\nPublisers, Government et al)" as repo <<repository>> {
+  
  }   
+  actor "Keep" as keep
 }
 
 coll <--down-- new 
 repo --up--> colr : Reuse
 cur --down-> repo : Deposit/\nPublish
-
+keep -> repo 
 note bottom of repo: Managed/\nsecure assets
 note bottom of new: Unmanaged/\nnon-secure assets
 @enduml
