@@ -9,16 +9,16 @@ rectangle "Research & Data Management Activities" as activities <<workspace>> {
 
 actor "Collect" as coll
 actor "Prepare" as prep 
-actor "Deposit" as dep
+actor "Keep" as dep
 actor "Analyse"  as an
 
 }
 
 
-coll -right-> prep
-prep -down-> dep
-prep <-right-> an
-an -down-> dep
+coll -down-> prep : Describe 
+prep -down-> dep : Publish / Deposit
+prep -right-> an : Use
+an -left-> coll : New
 
 
 @enduml

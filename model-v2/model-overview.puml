@@ -2,37 +2,33 @@
 !include_many ../data-lab-style.txt
 !include_many model-activities.puml
 
-title: Activities in Infrastructure Context (2)
+title: HASS Research Data Reference Model
 
 
 
+cloud "Novel /\nnon-archive\ndata" as new 
 
-rectangle "Storage Infrastucture" as infrastructure {
+note left of new: Unmanaged/\nnon-secure assets
+note right of new: Newly created data\nsurveys, obeservations etc
 
-rectangle "Access and authentication services" {
+
+
 
  database "Archival Repositories" as repo <<repository>> {
+ rectangle "Libraries"
+ rectangle "Research Data Repositories" {
+    rectangle "Institutional"
+    rectangle "Discipline"
+    rectangle "Publisher"
+    rectangle "International"
+ }
+ rectangle "GLAM Holdings"
 
  }   
 
-  database "Workspaces" as comp <<workspace>> {
-    
- }   
-note bottom of comp
-Collections eg websites
-Working data
-Bibliographies
-Code
-Desktop computation
-...
-end note
-}
-}
+new <--down-- coll : Find / Discover / Elict
+repo <--up-- coll : Reuse
+dep --down-> repo : Deposit
 
-repo --up--> coll : Reuse
-cur --down-> repo : Deposit
-an -down-> repo : Publish /\nArchive Results
-an  --down--> comp : Use,\nextend
-cur <--down-- comp : Preserve
 @enduml
 
