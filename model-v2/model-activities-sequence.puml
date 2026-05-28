@@ -1,0 +1,18 @@
+@startuml
+!include_many ../data-lab-style.txt
+!include_many model-activities.puml
+
+
+
+
+
+plan -right-> coll : then
+coll -right-> prep : then
+prep --down--> dep : then
+prep -right-> an : then
+an -left-> prep  : then 
+dep --up--> coll : then
+
+
+@enduml
+

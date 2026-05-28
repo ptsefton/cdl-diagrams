@@ -2,33 +2,38 @@
 !include_many ../data-lab-style.txt
 !include_many model-activities.puml
 
-title: HASS Research Data Reference Model
 
 
+
+
+
+
+
+rectangle "Infrastructure" as infra {
+ rectangle "Administrative Systems" <<admin>> as admin
+ 
+ database "Archival Repositories" as repo <<repository>> {
+ }
+ rectangle "Workspaces" <<workspace>> as ws {
+      database "Working storage" as risk
+      cloud "Applications, tools &\ncomputing environments" as comp
+ }
+ 
+}
 
 cloud "Novel /\nnon-archive\ndata" as new 
 
-note left of new: Unmanaged/\nnon-secure assets
-note right of new: Newly created data\nsurveys, obeservations etc
 
+note bottom of risk: -Unmanaged/\nnon-secure assets\n-Newly created data\n-Data in use
 
+an <-[thickness=10]-> comp : Use
+prep <-[thickness=5]-> comp : Use
+plan -[thickness=5]-> admin : Use
+new --right--> coll : Import data from external sources
+risk <--up--> coll : Store / use\nin-progress data
+repo --up--> coll : Re-use
+dep --down-> repo  : Archive
 
-
- database "Archival Repositories" as repo <<repository>> {
- rectangle "Libraries"
- rectangle "Research Data Repositories" {
-    rectangle "Institutional"
-    rectangle "Discipline"
-    rectangle "Publisher"
-    rectangle "International"
- }
- rectangle "GLAM Holdings"
-
- }   
-
-new <--down-- coll : Find / Discover / Elict
-repo <--up-- coll : Reuse
-dep --down-> repo : Deposit
 
 @enduml
 

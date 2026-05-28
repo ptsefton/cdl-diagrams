@@ -1,0 +1,45 @@
+
+@startuml
+!include ../data-lab-style.txt
+
+
+
+
+
+rectangle "Infrastructure classified by Use Case" as infra {
+
+
+ rectangle "Administrative Systems" <<admin>> as admin {
+    rectangle "Current Research Information Systems (CRIS)" as cris {
+    rectangle "Grants & Financial" as grants
+    rectangle "Ethics" as ethics
+    rectangle "Research Metrics" as metrics
+    }
+    rectangle "Data Management Planning" as dmp
+    rectangle "Licence and Rights\nManagement" as rights
+    rectangle "Authentication & Authorization" as auth
+ }
+ 
+ database "Archival Repositories" as repo <<repository>> {
+    rectangle "Journals, books & other publications" as ja
+    rectangle "GLAM systems" as glam
+    rectangle "Institutional Research\nRepositories" as irs
+    rectangle "Domain Repositories"
+    rectangle "Public Repositories" as pub
+    rectangle "Libraries" as lib
+
+ }
+ rectangle "Workspaces" <<workspace>> as ws {
+      
+      cloud "Novel /\nnon-archive\ndata" as new 
+      database "At-risk needs-to-be-archived\ndata in working storage" as risk
+      cloud "Computing Environments" as comp
+      cloud "Survey tools" as survey
+      cloud "Electronic Lab Notebooks" as eln
+      cloud "Other research tools" as other
+
+ }
+
+}
+
+@enduml

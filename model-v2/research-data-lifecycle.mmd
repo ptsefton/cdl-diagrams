@@ -1,0 +1,47 @@
+block-beta
+  columns 5
+  
+  %% Research Data Lifecycle
+  
+  %% Top row: Research Data Management Plan
+  space:2 RDMP["Plan"] space:2
+  
+  Collect space:3 arrow3<[" "]>(down)
+  
+  %% Third row: Workspace section
+  space:2 block:workspace:3
+    columns 1
+    wsTitle["workspaces"]
+    wsContent["• working storage<br/>• domain specific tools<br/>• domain specific services"]
+  end
+  
+  %% Fourth row: activities
+  arrow4<[" "]>(up) space Analyze space Describe
+  
+  %% Fifth row: deposit info
+  space:2 arrow5<[" "]>(down) space:2
+  space:2 DepositInfo["deposit reusable, interoperable<br/>data objects<br/>→ deposit early<br/>→ deposit often"] space:2
+  
+  %% Bottom row: Repository section
+  space:2 arrow6<[" "]>(down) space:2
+  space:2 block:repositories:1
+    columns 1
+    repoTitle["Repositories: institutional, domain or both"]
+    DB1[("Find / Access services")]
+    DB2[(" ")]
+    DB3[(" ")]
+  end space:2
+  
+  %% Link arrows back
+  arrow7<[" "]>(up)
+  
+  %% Styling
+  classDef workspaceStyle fill:#ffb3d9,stroke:#333,stroke-width:2px,color:#000
+  classDef repositoryStyle fill:#90ee90,stroke:#333,stroke-width:2px
+  classDef activityStyle fill:#ff9933,stroke:#333,stroke-width:2px,color:#000
+  classDef planStyle fill:#add8e6,stroke:#333,stroke-width:2px
+  
+  class workspace workspaceStyle
+  class repositories repositoryStyle
+  class Collect,Analyze,Describe activityStyle
+  class RDMP planStyle

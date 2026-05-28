@@ -1,24 +1,19 @@
 @startuml
 
 !include ../data-lab-style.txt
-title: Research Data Activities  
 
 top to bottom direction
 
-rectangle "Research & Data Management Activities" as activities <<workspace>> {
-
-actor "Collect" as coll
-actor "Prepare" as prep 
-actor "Keep" as dep
-actor "Analyse"  as an
+rectangle "Activities" as activities  {
+    actor "Plan" <<admin>> as plan
+    actor "Collect" <<workspace>> as coll
+    actor "Process/\nDescribe" <<workspace>> as prep 
+    actor "Deposit/\nPublish" <<repository>> as dep
+    actor "Analyse"  <<workspace>> as an
 
 }
 
 
-coll -down-> prep : Describe 
-prep -down-> dep : Publish / Deposit
-prep -right-> an : Use
-an -left-> coll : New
 
 
 @enduml
