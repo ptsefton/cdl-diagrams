@@ -1,7 +1,7 @@
 @startuml
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 !include_many ../data-lab-style.txt
-!include c4-style.puml
+!include c4-style.txt
 
 HIDE_STEREOTYPE()
 
