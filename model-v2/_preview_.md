@@ -30,11 +30,11 @@
 
 <img src="model-activities-c4.svg">
 
-## [model-v2/model-activities-sequence.svg](./model-activities-sequence.svg)
+## [model-v2/model-activities-sequence-c4.svg](./model-activities-sequence-c4.svg)
 
 
 
-<img src="model-activities-sequence.svg">
+<img src="model-activities-sequence-c4.svg">
 
 ## [model-v2/model-activities.svg](./model-activities.svg)
 
