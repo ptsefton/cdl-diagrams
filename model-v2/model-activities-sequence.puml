@@ -1,6 +1,6 @@
 @startuml
 !include_many ../data-lab-style.txt
-!include_many model-activities.puml
+!include_many model-activities-c4.puml
 
 
 

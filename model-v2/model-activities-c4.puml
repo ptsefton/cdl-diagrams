@@ -1,0 +1,19 @@
+@startuml
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!include_many ../data-lab-style.txt
+!include c4-style.puml
+
+HIDE_STEREOTYPE()
+
+Boundary(activities, "Activities", "Workflow", $tags="activities") {
+     Person(plan, "Plan", $tags="activity-admin")
+     Person(coll, "Collect", $tags="activity-workspace")
+     Person(prep, "Process/Describe", $tags="activity-workspace")
+     Person(dep, "Deposit/Publish", $tags="activity-repository")
+     Person(an, "Analyse", $tags="activity-workspace")
+}
+
+
+
+@enduml

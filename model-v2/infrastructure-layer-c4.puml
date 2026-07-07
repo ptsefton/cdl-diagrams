@@ -1,21 +1,11 @@
 @startuml
 !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
 !include_many ../data-lab-style.txt
+!include c4-style.puml
 
 HIDE_STEREOTYPE()
 
 LAYOUT_TOP_DOWN()
-
-AddContainerTag("infra-workspace", $bgColor="mistyrose", $fontColor="darkred", $borderColor="darkred")
-AddBoundaryTag("infra-workspace", $bgColor="mistyrose", $fontColor="darkred", $borderColor="darkred")
-
-AddContainerTag("infra-repository", $bgColor="palegreen", $fontColor="green", $borderColor="green")
-AddBoundaryTag("infra-repository", $bgColor="palegreen", $fontColor="green", $borderColor="green")
-
-AddContainerTag("infra-admin", $bgColor="#CCE5FF", $fontColor="steelblue", $borderColor="steelblue")
-AddBoundaryTag("infra-admin", $bgColor="#CCE5FF", $fontColor="steelblue", $borderColor="steelblue")
-
-AddBoundaryTag("infra-main", $bgColor="white", $fontColor="black", $borderColor="black")
 
 Boundary(infra, "Infrastructure classified by Use Case", "Infrastructure", $tags="infra-main") {
    System_Boundary(admin, "Administrative Systems", "Admin", $tags="infra-admin") {

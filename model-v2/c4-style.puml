@@ -1,0 +1,14 @@
+AddPersonTag("activity-workspace", $bgColor="mistyrose", $fontColor="darkred", $borderColor="darkred")
+AddContainerTag("infra-workspace", $bgColor="mistyrose", $fontColor="darkred", $borderColor="darkred")
+AddBoundaryTag("infra-workspace", $bgColor="mistyrose", $fontColor="darkred", $borderColor="darkred")
+
+AddPersonTag("activity-admin", $bgColor="#CCE5FF", $fontColor="steelblue", $borderColor="steelblue")
+AddContainerTag("infra-admin", $bgColor="#CCE5FF", $fontColor="steelblue", $borderColor="steelblue")
+AddBoundaryTag("infra-admin", $bgColor="#CCE5FF", $fontColor="steelblue", $borderColor="steelblue")
+
+AddPersonTag("activity-repository", $bgColor="palegreen", $fontColor="green", $borderColor="green")
+AddContainerTag("infra-repository", $bgColor="palegreen", $fontColor="green", $borderColor="green")
+AddBoundaryTag("infra-repository", $bgColor="palegreen", $fontColor="green", $borderColor="green")
+
+AddBoundaryTag("activities", $bgColor="white", $fontColor="black", $borderColor="black")
+AddBoundaryTag("infra-main", $bgColor="white", $fontColor="black", $borderColor="black")

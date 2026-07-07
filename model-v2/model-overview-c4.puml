@@ -1,0 +1,52 @@
+@startuml
+
+
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!include_many ../data-lab-style.txt
+!include c4-style.puml
+
+HIDE_STEREOTYPE()
+
+LAYOUT_LEFT_RIGHT()
+
+System_Boundary(activities, "Research Activities", $tags="activities") {
+     Person(plan, "Plan", "Plan research activities, including data management and sharing", $tags="activity-admin")
+     Person(coll, "Collect", "Collect and curate data from various sources", $tags="activity-workspace")
+     Person(prep, "Process/Describe", "Process and describe data", $tags="activity-workspace")
+     Person(dep, "Deposit/Publish", "Deposit and publish data", $tags="activity-repository")
+     Person(an, "Analyse", "Analyse data", $tags="activity-workspace")
+}
+
+plan -right[hidden]-> coll
+coll -right[hidden]-> an
+an   -right[hidden]-> prep
+prep -right[hidden]-> dep
+
+System_Boundary(infra, "Infrastructure") {
+     System_Boundary(admin_boundary, "Administrative Systems", $tags="infra-admin") {
+          Container(admin, "Administrative Systems", "Institutional systems", "Support planning, governance and compliance", $tags="infra-admin")
+     }
+
+     ContainerDb(repo, "Archival Repositories", "Repository platforms", "Long-term archival storage and publication", $tags="infra-repository")
+
+     System_Boundary(workspace_boundary, "Workspaces", $tags="infra-workspace") {
+          ContainerDb(risk, "Working Storage", "Workspace storage", "Unmanaged/non-secure assets, newly created data, and data in use", $tags="infra-workspace")
+          Container(comp, "Applications, Tools & Computing Environments", "Software/tools", "Used to process and analyse data", $tags="infra-workspace")
+     }
+}
+
+System_Ext(new_data, "Novel / non-archive data", "External data sources")
+
+Rel(an, comp, "Use")
+Rel(an, risk, "Use")
+Rel(prep, comp, "Use")
+Rel(plan, admin, "Use")
+Rel_R(new_data, coll, "Import data from external sources")
+Rel(coll, risk, "Store / use in-progress data")
+Rel(dep, repo, "Archive")
+Rel(coll, repo, "Re-use")
+
+
+
+@enduml
+

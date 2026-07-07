@@ -6,6 +6,12 @@
 
 <img src="ardc-repo-chooser.svg">
 
+## [model-v2/infrastructure-layer-c4.svg](./infrastructure-layer-c4.svg)
+
+
+
+<img src="infrastructure-layer-c4.svg">
+
 ## [model-v2/infrastructure-layer.svg](./infrastructure-layer.svg)
 
 
@@ -18,6 +24,12 @@
 
 <img src="legend.svg">
 
+## [model-v2/model-activities-c4.svg](./model-activities-c4.svg)
+
+
+
+<img src="model-activities-c4.svg">
+
 ## [model-v2/model-activities-sequence.svg](./model-activities-sequence.svg)
 
 
@@ -29,6 +41,12 @@
 
 
 <img src="model-activities.svg">
+
+## [model-v2/model-overview-c4.svg](./model-overview-c4.svg)
+
+
+
+<img src="model-overview-c4.svg">
 
 ## [model-v2/model-overview.svg](./model-overview.svg)
 
