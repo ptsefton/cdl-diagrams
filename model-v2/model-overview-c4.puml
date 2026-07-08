@@ -8,7 +8,6 @@
 
 HIDE_STEREOTYPE()
 
-LAYOUT_LEFT_RIGHT()
 
 System_Boundary(activities, "Research Activities", $tags="activities") {
      Person(plan, "Plan", "Plan research activities, including data management and sharing", $tags="activity-admin")
@@ -18,10 +17,6 @@ System_Boundary(activities, "Research Activities", $tags="activities") {
      Person(an, "Analyse", "Analyse data", $tags="activity-workspace")
 }
 
-plan -right[hidden]-> coll
-coll -right[hidden]-> an
-an   -right[hidden]-> prep
-prep -right[hidden]-> dep
 
 System_Boundary(infra, "Infrastructure") {
      System_Boundary(admin_boundary, "Administrative Systems", $tags="infra-admin") {
@@ -42,12 +37,16 @@ Rel(an, comp, "Use")
 Rel(an, risk, "Use")
 Rel(prep, comp, "Use")
 Rel(plan, admin, "Use")
-Rel_R(new_data, coll, "Import data from external sources")
+Rel(new_data, coll, "Import data from external sources")
 Rel(coll, risk, "Store / use in-progress data")
 Rel(dep, repo, "Archive")
 Rel(coll, repo, "Re-use")
 
 
+plan -right[hidden]-> coll
+coll -right[hidden]-> an
+an   -right[hidden]-> prep
+prep -right[hidden]-> dep
 
 @enduml
 
