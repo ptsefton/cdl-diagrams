@@ -4,6 +4,10 @@
 !include_many ../data-lab-style.txt
 !include c4-style.txt
 
+AddPersonTag("activity-workspace", $bgColor="mistyrose", $fontColor="darkred", $borderColor="transparent")
+AddPersonTag("activity-admin", $bgColor="#CCE5FF", $fontColor="steelblue", $borderColor="transparent")
+AddPersonTag("activity-repository", $bgColor="palegreen", $fontColor="green", $borderColor="transparent")
+
 HIDE_STEREOTYPE()
 
 Boundary(activities, "Activities", "Workflow", $tags="activities") {

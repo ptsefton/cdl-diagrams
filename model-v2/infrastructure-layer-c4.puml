@@ -7,34 +7,34 @@ HIDE_STEREOTYPE()
 
 LAYOUT_TOP_DOWN()
 
-Boundary(infra, "Infrastructure classified by Use Case", "Infrastructure", $tags="infra-main") {
-   System_Boundary(admin, "Administrative Systems", "Admin", $tags="infra-admin") {
-      Boundary(cris, "Current Research Information Systems (CRIS)", "Admin", $tags="infra-admin") {
-         Container(grants, "Grants & Financial", "Administrative system", $tags="infra-admin")
-         Container(ethics, "Ethics", "Administrative system", $tags="infra-admin")
-         Container(metrics, "Research Metrics", "Administrative system", $tags="infra-admin")
+Boundary(infra, "Infrastructure", "", $tags="infra-main") {
+   System_Boundary(admin, "Administrative Systems", "", $tags="infra-admin") {
+      Boundary(cris, "Current Research Information Systems (CRIS)", "", $tags="infra-admin") {
+         Container(grants, "Grants & Financial", "", $tags="infra-admin")
+         Container(ethics, "Ethics", "", $tags="infra-admin")
+         Container(metrics, "Research Metrics", "", $tags="infra-admin")
       }
-      Container(dmp, "Data Management Planning", "Administrative system", $tags="infra-admin")
-      Container(rights, "Licence and Rights\nManagement", "Administrative system", $tags="infra-admin")
-      Container(auth, "Authentication & Authorization", "Administrative system", $tags="infra-admin")
+      Container(dmp, "Data Management Planning", "", $tags="infra-admin")
+      Container(rights, "Licence and Rights\nManagement", "", $tags="infra-admin")
+      Container(auth, "Authentication & Authorization", "", $tags="infra-admin")
    }
 
-   System_Boundary(repo, "Archival Repositories", "Repository", $tags="infra-repository") {
-      Container(ja, "Journals, books & other publications", "Repository", $tags="infra-repository")
-      Container(glam, "GLAM systems", "Repository", $tags="infra-repository")
-      Container(irs, "Institutional Research\nRepositories", "Repository", $tags="infra-repository")
-      Container(domain_repo, "Domain Repositories", "Repository", $tags="infra-repository")
-      Container(pub, "Public Repositories", "Repository", $tags="infra-repository")
-      Container(lib, "Libraries", "Repository", $tags="infra-repository")
+   System_Boundary(repo, "Archival Repositories", "", $tags="infra-repository") {
+      Container(ja, "Journals, books & other publications", "", $tags="infra-repository")
+      Container(glam, "GLAM systems", "", $tags="infra-repository")
+      Container(irs, "Institutional Research\nRepositories", "", $tags="infra-repository")
+      Container(domain_repo, "Domain Repositories", "", $tags="infra-repository")
+      Container(pub, "Public Repositories", "", $tags="infra-repository")
+      Container(lib, "Libraries", "", $tags="infra-repository")
    }
 
-   System_Boundary(ws, "Workspaces", "Workspace", $tags="infra-workspace") {
-      Container(new_data, "Novel /\nnon-archive\ndata", "Workspace source", $tags="infra-workspace")
-      ContainerDb(risk, "At-risk needs-to-be-archived\ndata in working storage", "Workspace storage", $tags="infra-workspace")
-      Container(comp, "Computing Environments", "Workspace tool", $tags="infra-workspace")
-      Container(survey, "Survey tools", "Workspace tool", $tags="infra-workspace")
-      Container(eln, "Electronic Lab Notebooks", "Workspace tool", $tags="infra-workspace")
-      Container(other, "Other research tools", "Workspace tool", $tags="infra-workspace")
+   System_Boundary(ws, "Workspaces", "", $tags="infra-workspace") {
+      Container(new_data, "Novel /\nnon-archive\ndata", "", $tags="infra-workspace")
+      ContainerDb(risk, "At-risk needs-to-be-archived\ndata in working storage", "", $tags="infra-workspace")
+      Container(comp, "Computing Environments", "", $tags="infra-workspace")
+      Container(survey, "Survey tools", "", $tags="infra-workspace")
+      Container(eln, "Electronic Lab Notebooks", "", $tags="infra-workspace")
+      Container(other, "Other research tools", "", $tags="infra-workspace")
    }
 }
 

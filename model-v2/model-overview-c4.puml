@@ -5,30 +5,33 @@
 !include_many ../data-lab-style.txt
 !include c4-style.txt
 
+AddPersonTag("activity-workspace", $bgColor="mistyrose", $fontColor="darkred", $borderColor="transparent")
+AddPersonTag("activity-admin", $bgColor="#CCE5FF", $fontColor="steelblue", $borderColor="transparent")
+AddPersonTag("activity-repository", $bgColor="palegreen", $fontColor="green", $borderColor="transparent")
+
 
 HIDE_STEREOTYPE()
 
+' Conservative global spacing between shapes (Graphviz layout)
+skinparam nodesep 90
+skinparam ranksep 90
 
-System_Boundary(activities, "Research Activities", $tags="activities") {
-     Person(plan, "Plan", "Plan research activities, including data management and sharing", $tags="activity-admin")
-     Person(coll, "Collect", "Collect and curate data from various sources", $tags="activity-workspace")
-     Person(prep, "Process/Describe", "Process and describe data", $tags="activity-workspace")
-     Person(dep, "Deposit/Publish", "Deposit and publish data", $tags="activity-repository")
-     Person(an, "Analyse", "Analyse data", $tags="activity-workspace")
+
+System_Boundary(activities, "\nResearch Activities", $tags="activities") {
+     Person(plan, "Plan", "<color:black>Plan research activities, including data management and sharing</color>", $tags="activity-admin")
+     Person(coll, "Collect", "<color:black>Collect and curate data from various sources</color>", $tags="activity-workspace")
+     Person(prep, "Process/Describe", "<color:black>Process and describe data</color>", $tags="activity-workspace")
+     Person(dep, "Deposit/Publish", "<color:black>Deposit and publish data</color>", $tags="activity-repository")
+     Person(an, "Analyse", "<color:black>Analyse data</color>", $tags="activity-workspace")
 }
 
 
-System_Boundary(infra, "Infrastructure") {
-     System_Boundary(admin_boundary, "Administrative Systems", $tags="infra-admin") {
-          Container(admin, "Administrative Systems", "Institutional systems", "Support planning, governance and compliance", $tags="infra-admin")
-     }
-
-     ContainerDb(repo, "Archival Repositories", "Repository platforms", "Long-term archival storage and publication", $tags="infra-repository")
-
-     System_Boundary(workspace_boundary, "Workspaces", $tags="infra-workspace") {
-          ContainerDb(risk, "Working Storage", "Workspace storage", "Unmanaged/non-secure assets, newly created data, and data in use", $tags="infra-workspace")
-          Container(comp, "Applications, Tools & Computing Environments", "Software/tools", "Used to process and analyse data", $tags="infra-workspace")
-     }
+System_Boundary(infra, "\nInfrastructure") {
+     Container(admin, "\nInstitutional Planning, Governance & Compliance", "", "Support planning, governance and compliance", $tags="infra-admin")
+     Container(auth, "\nAuthentication & Authorization", "", "Check licenses on all transactions", $tags="infra-admin")
+     ContainerDb(repo, "\nArchival Repositories", "", "Long-term archival storage and publication, including Open Access and access-controlled Research Objects", $tags="infra-repository")
+     ContainerDb(risk, "\nWorking Storage", "", "Unmanaged/non-secure assets, newly created data, and data in use", $tags="infra-workspace")
+     Container(comp, "\nApplications, Tools & Computing Environments", "", "Used to process and analyse data", $tags="infra-workspace")
 }
 
 System_Ext(new_data, "Novel / non-archive data", "External data sources")
@@ -39,8 +42,10 @@ Rel(prep, comp, "Use")
 Rel(plan, admin, "Use")
 Rel(new_data, coll, "Import data from external sources")
 Rel(coll, risk, "Store / use in-progress data")
-Rel(dep, repo, "Archive")
+Rel(dep, repo, "Archive\n\nWith metadata and re-use license information")
 Rel(coll, repo, "Re-use")
+Rel_L(repo, auth, "Authorized?")
+
 
 
 plan -right[hidden]-> coll
