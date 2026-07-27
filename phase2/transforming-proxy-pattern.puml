@@ -1,43 +1,48 @@
 @startuml
 !include ./data-lab-style.md
-
 title: Transforming Proxy
 
-database "Trove" <<repository>> as t {
-rectangle "API" as tvapi
+[Spreadsheet] <<workspace>>
+[Voyant] <<workspace>>
+[TEIPublisher] <<workspace>>
+[Feed Reader\napp] as FeedReader <<workspace>>
+[WordPress] <<workspace>>
+[Custom Trove XML app] as TroveXMLClient <<workspace>>
+
+component TroveProxy {
+  port tei
+  port csv
+  port atom
+  port trovexml
+
+  component [TEI transform] as TEItransform
+  component [CSV transform] as CSVtransform
+  component [Atom transform] as Atomtransform
+
+  component GenericProxy
 }
 
-rectangle "Transforming API" as trapi <<workspace>> {
-rectangle "Transformer\n Eg Java based XSLT"  as tf
-}
-
-rectangle "Analytical"  as ws <<workspace>> {
-rectangle "Notebook" as nb  {
-
-}
-
-rectangle "Service: Eg Voyant tools " as s1  {
-}
+Component TroveAPI {
 }
 
 
+Voyant <--> tei
+TEIPublisher <--> tei
+tei <--> TEItransform
+TEItransform <--> GenericProxy 
 
-rectangle "Transformed Results" as tr {
- rectangle "OAI-PMH"
-  rectangle "RSS/Atom"
-  rectangle "TEI"
-  rectangle "Linked Data / RDF"
+WordPress <--> atom
+FeedReader <--> atom
+atom <--> Atomtransform
+Atomtransform <--> GenericProxy
 
+Spreadsheet <--> csv
+csv <--> CSVtransform
+CSVtransform <--> GenericProxy
 
-}
+TroveXMLClient <--> trovexml
+trovexml <--> GenericProxy
 
-ws --down--> trapi : Send 'normal' Trove call\nw/ user API Key
+GenericProxy <--down--> TroveAPI
 
-
-trapi --up--> tr : Send/receive 'normal' Trove call\nw/ user API Key
-
-tr ---up---> ws : Receive TEI etc
-
-
-trapi <--> t : Standard API Call
 @enduml
